@@ -10,6 +10,8 @@ datagroup: melissa_shooz_default_datagroup {
 
 persist_with: melissa_shooz_default_datagroup
 
+explore: inventory {}
+
 explore: adidas {}
 
 explore: adidas_clothing {}
