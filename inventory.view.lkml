@@ -1,5 +1,6 @@
 view: inventory {
 
+#joins rows from adidas, converse, jordan, nike, off-white, kith, yeezy
   derived_table: {
     sql: (
       SELECT brand, item_name, average_price, ask_count, bid_count, total_sale, total_sale_count, volatility, size, retail_price, image_url, release_date FROM `lookerdata.StockX.adidas`
@@ -16,6 +17,76 @@ view: inventory {
       UNION ALL
       SELECT brand, item_name, average_price, ask_count, bid_count, total_sale, total_sale_count, volatility, size, retail_price, image_url, release_date FROM `lookerdata.StockX.yeezy`
     );;
+  }
+
+  dimension: brand {
+    type: string
+    sql: ${TABLE}.Brand ;;
+  }
+
+  dimension: item_name {
+    type: string
+    sql: ${TABLE}.Item_Name ;;
+  }
+
+  dimension: average_price {
+    type: number
+    sql: ${TABLE}.Average_Price ;;
+  }
+
+  dimension: ask_count {
+    type: number
+    sql: ${TABLE}.Ask_Count ;;
+  }
+
+  dimension: bid_count {
+    type: number
+    sql: ${TABLE}.Bid_Count ;;
+  }
+
+  dimension: total_sale {
+    type: number
+    sql: ${TABLE}.Total_Sale ;;
+  }
+
+  dimension: total_sale_count {
+    type: number
+    sql: ${TABLE}.Total_Sale_Count ;;
+  }
+
+  dimension: volatility {
+    type: number
+    sql: ${TABLE}.Volatility ;;
+  }
+
+  dimension: size {
+    type: number
+    sql: ${TABLE}.Size ;;
+  }
+
+  dimension: retail_price {
+    type: number
+    sql: ${TABLE}.Retail_Price ;;
+  }
+
+  dimension: image_url {
+    type: string
+    sql: ${TABLE}.Image_URL ;;
+    html: <img src="{{value}}" width="300px"/> ;;
+  }
+
+  dimension_group: release {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: CAST(DATE_ADD(CAST(${TABLE}.release_date as DATE), INTERVAL 2000 YEAR) as TIMESTAMP);;
   }
   # # You can specify the table name if it's different from the view name:
   # sql_table_name: my_schema_name.tester ;;
