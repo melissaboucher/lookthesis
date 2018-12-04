@@ -1,6 +1,12 @@
 view: adidas {
   sql_table_name: StockX.adidas ;;
 
+  dimension: key {
+    hidden: yes
+    type: string
+    sql: CONCAT(${item_name}, ", ", CAST(${size} AS string)) ;;
+  }
+
   dimension: annual_high {
     type: number
     sql: ${TABLE}.Annual_High ;;

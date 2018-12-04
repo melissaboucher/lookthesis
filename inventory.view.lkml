@@ -49,6 +49,11 @@ view: inventory {
     sql: ${TABLE}.Total_Sale ;;
   }
 
+  measure: sum_total_sale {
+    type: sum
+    sql: ${total_sale} ;;
+  }
+
   dimension: total_sale_count {
     type: number
     sql: ${TABLE}.Total_Sale_Count ;;
@@ -88,6 +93,12 @@ view: inventory {
     ]
     sql: CAST(DATE_ADD(CAST(${TABLE}.release_date as DATE), INTERVAL 2000 YEAR) as TIMESTAMP);;
   }
+
+
+  measure: count {
+    type: count
+  }
+
   # # You can specify the table name if it's different from the view name:
   # sql_table_name: my_schema_name.tester ;;
   #

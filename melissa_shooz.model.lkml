@@ -10,17 +10,31 @@ datagroup: melissa_shooz_default_datagroup {
 
 persist_with: melissa_shooz_default_datagroup
 
-explore: inventory {
-  join: item_transactions {
-    type: inner
-    relationship: one_to_many
-    sql_on: ${inventory.brand} = ${item_transactions.brand} AND
-            ${inventory.item_name} = ${item_transactions.item_name} AND
-            ${inventory.size} = ${item_transactions.size};;
-  }
-}
+# explore: inventory {
+#   join: item_transactions {
+#     type: inner
+#     relationship: one_to_many
+#     sql_on: ${inventory.brand} = ${item_transactions.brand} AND
+#             ${inventory.item_name} = ${item_transactions.item_name} AND
+#             ${inventory.size} = ${item_transactions.size};;
+#   }
+# }
+#
+# explore: item_transactions {
+#   join: inventory {
+#     type: left_outer
+#     relationship: many_to_one
+#     sql_on: ${inventory.brand} = ${item_transactions.brand} AND
+#             ${inventory.item_name} = ${item_transactions.item_name} AND
+#             ${inventory.size} = ${item_transactions.size};;
+#   }
+# }
 
-explore: item_transactions {}
+# inner join vs left outer
+# set up unique IDs for each row
+
+explore: inventory {}
+#explore: item_transactions {}
 
 explore: adidas {}
 
