@@ -1,6 +1,12 @@
 view: off_white {
   sql_table_name: StockX.off_white ;;
 
+  dimension: key {
+    hidden: yes
+    type: string
+    sql: CONCAT(${item_name}, ", ", CAST(${size} AS string)) ;;
+  }
+
   dimension: annual_high {
     type: number
     sql: ${TABLE}.Annual_High ;;

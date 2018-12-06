@@ -19,6 +19,12 @@ view: item_transactions {
           );;
   }
 
+
+#  dimension: appreciation {
+#    type: number
+#    sql: ;;
+#  }
+
   dimension: brand {
     type: string
     sql: ${TABLE}.Brand ;;
