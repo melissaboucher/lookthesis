@@ -10,18 +10,18 @@ datagroup: melissa_shooz_default_datagroup {
 
 persist_with: melissa_shooz_default_datagroup
 
-explore: inventory {
+explore: inventory_shoes {
   join: item_transactions {
     type: inner
     relationship: one_to_many
-    sql_on: ${inventory.brand} = ${item_transactions.brand} AND
-            ${inventory.item_name} = ${item_transactions.item_name} AND
-            ${inventory.size} = ${item_transactions.size};;
+    sql_on: ${inventory_shoes.brand} = ${item_transactions.brand} AND
+            ${inventory_shoes.item_name} = ${item_transactions.item_name} AND
+            ${inventory_shoes.size} = ${item_transactions.size};;
   }
 }
 
 # explore: item_transactions {
-#   join: inventory {
+#   join: inventory_shoes {
 #     type: left_outer
 #     relationship: many_to_one
 #     sql_on: ${inventory.brand} = ${item_transactions.brand} AND
@@ -30,7 +30,6 @@ explore: inventory {
 #   }
 # }
 
-#explore: inventory {}
 explore: item_transactions {}
 
 explore: adidas {}

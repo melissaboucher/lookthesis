@@ -1,4 +1,4 @@
-view: inventory {
+view: inventory_shoes {
 
 #joins rows from adidas, converse, jordan, nike, off-white, kith, yeezy
   derived_table: {
