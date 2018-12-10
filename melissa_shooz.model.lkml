@@ -31,7 +31,7 @@ explore: inventory {
 # }
 
 #explore: inventory {}
-#explore: item_transactions {}
+explore: item_transactions {}
 
 explore: adidas {}
 

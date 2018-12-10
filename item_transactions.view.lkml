@@ -19,7 +19,7 @@ view: item_transactions {
           );;
   }
 
-
+# diff in average price of item in a year (e.g. 2017) from average price of item in previous year (e.g. 2016)
 #  dimension: appreciation {
 #    type: number
 #    sql: ;;
@@ -61,6 +61,7 @@ view: item_transactions {
 
   measure: count {
     type: count
+    drill_fields: [item_name]
   }
 
 }
