@@ -57,6 +57,7 @@ view: item_transactions {
   dimension: price {
     type: number
     sql: ${TABLE}.Price ;;
+    value_format_name: usd
   }
 
   measure: count {

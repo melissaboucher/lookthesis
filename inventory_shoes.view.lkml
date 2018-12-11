@@ -20,6 +20,7 @@ view: inventory_shoes {
   }
 
   dimension: key {
+    primary_key: yes
     hidden: yes
     type: string
     sql: CONCAT(${item_name}, ", ", CAST(${size} AS string)) ;;
@@ -38,6 +39,7 @@ view: inventory_shoes {
   dimension: average_price {
     type: number
     sql: ${TABLE}.Average_Price ;;
+    value_format_name: usd
   }
 
   dimension: ask_count {
@@ -53,16 +55,25 @@ view: inventory_shoes {
   dimension: total_sale {
     type: number
     sql: ${TABLE}.Total_Sale ;;
+    value_format_name: usd
+
   }
 
   measure: sum_total_sale {
     type: sum
     sql: ${total_sale} ;;
+    value_format_name: usd
+
   }
 
   dimension: total_sale_count {
     type: number
     sql: ${TABLE}.Total_Sale_Count ;;
+  }
+
+  measure: total_sale_count_sum {
+    type:  sum
+    sql:  ${total_sale_count} ;;
   }
 
   dimension: volatility {
@@ -78,12 +89,13 @@ view: inventory_shoes {
   dimension: retail_price {
     type: number
     sql: ${TABLE}.Retail_Price ;;
+    value_format_name: usd
   }
 
   dimension: image_url {
     type: string
     sql: ${TABLE}.Image_URL ;;
-    html: <img src="{{value}}" width="300px"/> ;;
+    html: <img src="{{value}}" width="150px"/> ;;
   }
 
   dimension_group: release {
@@ -109,6 +121,11 @@ view: inventory_shoes {
     type:  average
     sql: ${average_price};;
     value_format_name: usd
+  }
+
+  measure: avg_increase_over_retail {
+    type: sum
+    sql:  (${average_price} - ${retail_price})/${retail_price} ;;
   }
 
   # # You can specify the table name if it's different from the view name:
