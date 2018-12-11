@@ -17,13 +17,15 @@ view: inventory_shoes {
       UNION ALL
       SELECT brand, item_name, average_price, ask_count, bid_count, total_sale, total_sale_count, volatility, size, retail_price, image_url, release_date FROM `lookerdata.StockX.yeezy`
     );;
+
+    sql_trigger_value: SELECT FORMAT_TIMESTAMP('%F', CURRENT_TIMESTAMP(), 'America/Los_Angeles') ;;
   }
 
   dimension: key {
     primary_key: yes
     hidden: yes
     type: string
-    sql: CONCAT(${item_name}, ", ", CAST(${size} AS string)) ;;
+    sql: CONCAT(${brand},", ",${item_name}, ", ", CAST(${size} AS string)) ;;
   }
 
   dimension: brand {
@@ -56,14 +58,12 @@ view: inventory_shoes {
     type: number
     sql: ${TABLE}.Total_Sale ;;
     value_format_name: usd
-
   }
 
   measure: sum_total_sale {
     type: sum
     sql: ${total_sale} ;;
     value_format_name: usd
-
   }
 
   dimension: total_sale_count {
@@ -96,6 +96,12 @@ view: inventory_shoes {
     type: string
     sql: ${TABLE}.Image_URL ;;
     html: <img src="{{value}}" width="150px"/> ;;
+  }
+
+  dimension: image_url_test {
+    type: string
+    sql: ${TABLE}.Image_URL ;;
+    html: <img src="{{value}}" style="width:50px"/> ;;
   }
 
   dimension_group: release {
