@@ -2,6 +2,7 @@ view: adidas {
   sql_table_name: StockX.adidas ;;
 
   dimension: key {
+    primary_key: yes
     hidden: yes
     type: string
     sql: CONCAT(${item_name}, ", ", CAST(${size} AS string)) ;;

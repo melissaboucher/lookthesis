@@ -2,6 +2,7 @@ view: kith {
   sql_table_name: StockX.kith ;;
 
   dimension: key {
+    primary_key: yes
     hidden: yes
     type: string
     sql: CONCAT(${item_name}, ", ", CAST(${size} AS string)) ;;

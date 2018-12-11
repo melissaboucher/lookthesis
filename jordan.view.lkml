@@ -2,6 +2,7 @@ view: jordan {
   sql_table_name: StockX.jordan ;;
 
   dimension: key {
+    primary_key: yes
     hidden: yes
     type: string
     sql: CONCAT(${item_name}, ", ", CAST(${size} AS string)) ;;

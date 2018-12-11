@@ -2,6 +2,7 @@ view: converse {
   sql_table_name: StockX.converse ;;
 
   dimension: key {
+    primary_key: yes
     hidden: yes
     type: string
     sql: CONCAT(${item_name}, ", ", CAST(${size} AS string)) ;;

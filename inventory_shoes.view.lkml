@@ -19,6 +19,12 @@ view: inventory_shoes {
     );;
   }
 
+  dimension: key {
+    hidden: yes
+    type: string
+    sql: CONCAT(${item_name}, ", ", CAST(${size} AS string)) ;;
+  }
+
   dimension: brand {
     type: string
     sql: ${TABLE}.Brand ;;
@@ -97,6 +103,12 @@ view: inventory_shoes {
 
   measure: count {
     type: count
+  }
+
+  measure: avg_price {
+    type:  average
+    sql: ${average_price};;
+    value_format_name: usd
   }
 
   # # You can specify the table name if it's different from the view name:
