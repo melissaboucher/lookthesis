@@ -45,6 +45,7 @@ view: jordan_clothing {
   dimension: image_url {
     type: string
     sql: ${TABLE}.Image_URL ;;
+    html: <img src="{{value}}" width="150px"/> ;;
   }
 
   dimension: item_name {

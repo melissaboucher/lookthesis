@@ -87,6 +87,11 @@ view: inventory_shoes {
     sql: ${TABLE}.Volatility ;;
   }
 
+  measure: avg_volatility {
+    type: average
+    sql:  ${volatility} ;;
+  }
+
   dimension: size {
     type: number
     sql: ${TABLE}.Size ;;

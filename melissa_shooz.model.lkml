@@ -30,6 +30,8 @@ explore: inventory_shoes {
 #   }
 # }
 
+explore: inventory_clothing {}
+
 explore: item_transactions {}
 
 explore: adidas {}
