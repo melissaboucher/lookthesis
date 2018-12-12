@@ -20,15 +20,17 @@ explore: inventory_shoes {
   }
 }
 
-explore: item_transactions {
-  join: inventory_shoes {
-    type: left_outer
-    relationship: many_to_one
-    sql_on: ${inventory_shoes.brand} = ${item_transactions.brand} AND
-            ${inventory_shoes.item_name} = ${item_transactions.item_name} AND
-            ${inventory_shoes.size} = ${item_transactions.size};;
-  }
-}
+# explore: item_transactions {
+#   join: inventory_shoes {
+#     type: left_outer
+#     relationship: many_to_one
+#     sql_on: ${inventory_shoes.brand} = ${item_transactions.brand} AND
+#             ${inventory_shoes.item_name} = ${item_transactions.item_name} AND
+#             ${inventory_shoes.size} = ${item_transactions.size};;
+#   }
+# }
+
+explore: item_transactions {}
 
 explore: adidas {}
 

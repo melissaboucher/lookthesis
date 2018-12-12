@@ -142,8 +142,8 @@ view: inventory_shoes {
   }
 
   measure: avg_increase_over_retail {
-    type: sum
-    sql:  (${average_price} - ${retail_price})/${retail_price} ;;
+    type: number
+    sql:  (${average_price} - ${retail_price})/ NULLIF(${retail_price}, 0) ;;
   }
 
   # # You can specify the table name if it's different from the view name:
