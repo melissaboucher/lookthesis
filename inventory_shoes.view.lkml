@@ -42,6 +42,11 @@ view: inventory_shoes {
   dimension: item_name {
     type: string
     sql: ${TABLE}.Item_Name ;;
+
+    link: {
+      label: "Drill into item"
+      url: "/dashboards/264?Item_Name={{ value | url_encode }}"
+    }
   }
 
   dimension: average_price {

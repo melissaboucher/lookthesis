@@ -43,6 +43,11 @@ view: item_transactions {
   dimension: item_name {
     type: string
     sql: ${TABLE}.item_name ;;
+
+    link: {
+      label: "Drill into item"
+      url: "/dashboards/264?Item_Name={{ value | url_encode }}"
+    }
   }
 
   dimension_group: date {
