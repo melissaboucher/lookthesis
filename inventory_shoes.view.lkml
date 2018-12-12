@@ -31,6 +31,12 @@ view: inventory_shoes {
   dimension: brand {
     type: string
     sql: ${TABLE}.Brand ;;
+
+    link: {
+      label: "Drill into brand"
+      url: "/dashboards/262?Brand={{ value | url_encode }}"
+    }
+
   }
 
   dimension: item_name {
@@ -98,10 +104,16 @@ view: inventory_shoes {
     html: <img src="{{value}}" width="150px"/> ;;
   }
 
-  dimension: image_url_test {
+  dimension: image_url_small {
     type: string
     sql: ${TABLE}.Image_URL ;;
     html: <img src="{{value}}" style="width:50px"/> ;;
+  }
+
+  dimension: image_url_large {
+    type: string
+    sql: ${TABLE}.Image_URL ;;
+    html: <img src="{{value}}" style="width:400px"/> ;;
   }
 
   dimension_group: release {
