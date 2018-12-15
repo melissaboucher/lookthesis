@@ -31,6 +31,7 @@ view: inventory_shoes {
   dimension: brand {
     type: string
     sql: ${TABLE}.Brand ;;
+#     html:   <font color="#AAA"; style="text-transform:uppercase; font-size:90%;">{{ value }}</font>;;
 
     link: {
       label: "Drill into brand"
@@ -45,7 +46,7 @@ view: inventory_shoes {
 
     link: {
       label: "Drill into item"
-      url: "/dashboards/264?Item_Name={{ value | url_encode }}"
+      url: "/dashboards/264?item%20name={{ value | url_encode }}"
     }
   }
 
